@@ -40,7 +40,7 @@ const Cube = ({ posX, posY, color }) => {
       onPointerLeave={() => setEnter(!enter)}
     >
       <boxGeometry />
-      <meshBasicMaterial wireframe={enter} color={`#${color}`} />
+      <meshBasicMaterial wireframe={enter} color={`${color}`} />
     </mesh>
   );
 };
@@ -48,7 +48,7 @@ const Cube = ({ posX, posY, color }) => {
 const Color = ({ bgColor, handleClick }) => {
   return (
     <div
-      className={` h-[5rem] w-[5rem] bg-[#${bgColor}] rounded-full hover:size-[6rem] transition-all duration-500`}
+      className={` h-[5rem] w-[5rem] bg-[${bgColor}] rounded-full hover:size-[6rem] transition-all duration-500`}
       onClick={() => handleClick(bgColor)}
     />
   );
@@ -75,19 +75,19 @@ function ScrollPractica() {
         </Canvas>
         <div className=" w-full flex flex-row justify-center items-center h-[15rem] gap-[6rem]">
           <Color
-            bgColor={"A1BA68"}
+            bgColor={"#A1BA68"}
             handleClick={(c) => {
               setColor(c);
             }}
           />
           <Color
-            bgColor={"BA6893"}
+            bgColor={"#BA6893"}
             handleClick={(c) => {
               setColor(c);
             }}
           />
           <Color
-            bgColor={"6875BA"}
+            bgColor={"#6875BA"}
             handleClick={(c) => {
               setColor(c);
             }}
