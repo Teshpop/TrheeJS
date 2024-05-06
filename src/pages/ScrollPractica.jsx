@@ -4,7 +4,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTime, useTransform, useScroll } from "framer-motion";
 import { degreesToRadians } from "popmotion";
 
-const Cube = ({ posX, posY, color }) => {
+const Cube = ({ posX, posY, colorCube }) => {
   const [enter, setEnter] = React.useState(true);
   const myMesh = React.useRef(null);
   const { camera } = useThree();
@@ -40,24 +40,28 @@ const Cube = ({ posX, posY, color }) => {
       onPointerLeave={() => setEnter(!enter)}
     >
       <boxGeometry />
-      <meshBasicMaterial wireframe={enter} color={`${color}`} />
+      <meshBasicMaterial wireframe={enter} color={`${colorCube}`} />
     </mesh>
   );
 };
 
-const Color = ({ bgColor, handleClick }) => {
+const ColorCont = ({ colorBG, handleClick }) => {
+  const bgStyle = {
+    backgroundColor: colorBG,
+  };
   return (
     <div
-      className={` h-[5rem] w-[5rem] bg-[${bgColor}] rounded-full hover:size-[6rem] transition-all duration-500`}
-      onClick={() => handleClick(bgColor)}
-    />
+      className="h-[5rem] w-[5rem] rounded-full hover:size-[6rem] transition-all duration-500"
+      style={bgStyle}
+      onClick={() => handleClick(colorBG)}
+    ></div>
   );
 };
 
 function ScrollPractica() {
   const [posX, setX] = React.useState();
   const [posY, setY] = React.useState();
-  const [color, setColor] = React.useState();
+  const [colorCube, setColorCube] = React.useState();
   const cont = useRef();
 
   return (
@@ -71,25 +75,25 @@ function ScrollPractica() {
       >
         <h1 className=" text-white text-6xl ">Jelkome</h1>
         <Canvas>
-          <Cube posX={posX} posY={posY} color={color} />
+          <Cube posX={posX} posY={posY} colorCube={colorCube} />
         </Canvas>
         <div className=" w-full flex flex-row justify-center items-center h-[15rem] gap-[6rem]">
-          <Color
-            bgColor={"#A1BA68"}
+          <ColorCont
+            colorBG={"#A1BA68"}
             handleClick={(c) => {
-              setColor(c);
+              setColorCube(c);
             }}
           />
-          <Color
-            bgColor={"#BA6893"}
+          <ColorCont
+            colorBG={"#BA6893"}
             handleClick={(c) => {
-              setColor(c);
+              setColorCube(c);
             }}
           />
-          <Color
-            bgColor={"#6875BA"}
+          <ColorCont
+            colorBG={"#6875BA"}
             handleClick={(c) => {
-              setColor(c);
+              setColorCube(c);
             }}
           />
         </div>
