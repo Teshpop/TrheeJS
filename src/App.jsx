@@ -1,11 +1,20 @@
-import { Test, ExampleMotion, Scroll, ScrollPractica } from "./pages";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import {
+  Test,
+  ExampleMotion,
+  Scroll,
+  ScrollPractica,
+  EscenarioSimple,
+  Scroll3D,
+} from "./pages";
 import "./index.css";
 
 function App() {
   return (
-    <>
-      <ScrollPractica />
-    </>
+    <div className=" bg-black">
+      <Scroll3D />
+    </div>
   );
 }
 

@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 import React, { useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useTime, useTransform, useScroll } from "framer-motion";
+import { useTime, useTransform, useScroll, motion } from "framer-motion";
 import { degreesToRadians } from "popmotion";
 
 const Cube = ({ posX, posY, colorCube }) => {
@@ -58,6 +60,24 @@ const ColorCont = ({ colorBG, handleClick }) => {
   );
 };
 
+const ScrollAnim = () => {
+  return (
+    <div className="h-[14rem] w-[3rem] border-white border-solid border-2 rounded-[100px] flex justify-center items-start p-1">
+      <motion.div
+        className="h-[2.2rem] w-[2.2rem] bg-white rounded-full"
+        animate={{
+          translateY: [60, 2, 60],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    </div>
+  );
+};
+
 function ScrollPractica() {
   const [posX, setX] = React.useState();
   const [posY, setY] = React.useState();
@@ -67,13 +87,14 @@ function ScrollPractica() {
   return (
     <div className=" h-[300vh] w-full" ref={cont}>
       <div
-        className=" bg-black h-screen w-full flex justify-center items-center flex-col fixed"
+        className=" bg-black h-screen w-full flex justify-center items-center flex-col fixed gap-14"
         onPointerMove={(e) => {
           setX(e.pageX - window.innerWidth * 0.5);
           setY(e.pageY - cont.current.getBoundingClientRect().height * 0.5);
         }}
       >
         <h1 className=" text-white text-6xl ">Jelkome</h1>
+        <ScrollAnim />
         <Canvas>
           <Cube posX={posX} posY={posY} colorCube={colorCube} />
         </Canvas>
